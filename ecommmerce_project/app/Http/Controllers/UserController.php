@@ -23,7 +23,7 @@ class UserController extends Controller
             return redirect('/admin_products');
         }
         else{
-            return redirect()->back();
+            return redirect()->back()->with('error','Wrong user name or password.');
         }
     }
 
@@ -45,13 +45,14 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        User::Insert([
+        $newUser = User::Insert([
             'name'=>$request->has('uname')?$request->get('uname'):'',
             'email'=>$request->has('email')?$request->get('email'):'',
             'mobile'=>$request->has('mobail')?$request->get('mobail'):'',
             'password'=>$request->has('pass')?$request->get('pass'):'',
         ]);
-        return redirect('/admin_products');
+        // return redirect('/admin_products');
+        return redirect()->back()->with('success','New user create successfully.');
     }
 
     /**

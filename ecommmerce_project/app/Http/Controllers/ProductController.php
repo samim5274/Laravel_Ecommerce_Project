@@ -14,7 +14,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return "Login successfully!";
+        $products = Product::paginate(4);
+        return view('userProduct', compact('products'));
     }
 
     /**
@@ -74,7 +75,9 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        $images = explode(' | ', $product->image);
+        $related_products = Product::where('catagory_id',$product->catagory_id)->where('id','!=',$product->id)->limit(3)->get();
+        return view('product_detail', compact('product', 'images','related_products'));
     }
 
     /**
@@ -125,7 +128,6 @@ class ProductController extends Controller
                 'image'=>$images[0]
             ];
         }
-
         return view('add_Products', compact('returnProduct'));
     }
 }
