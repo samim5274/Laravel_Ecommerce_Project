@@ -53,3 +53,9 @@ Route::get('/admin_products','App\Http\Controllers\ProductController@addProduct'
 Route::get('/profile_employee','App\Http\Controllers\EmployeeController@profileEmployee');
 
 Route::get('/allUser','App\Http\Controllers\EmployeeController@alluserShow');
+
+Route::get('/edit/{id}', 'App\Http\Controllers\EmployeeController@editInfo');
+
+Route::post('/update-data/{id}','App\Http\Controllers\EmployeeController@updateData');
+
+Route::get('/remove/{id}','App\Http\Controllers\EmployeeController@delete');

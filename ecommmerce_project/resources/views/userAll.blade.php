@@ -12,6 +12,11 @@
 <section id="allUserSection">
     <div class="container">
         <div class="row">
+            @if(session()->has('delete'))
+            <p style="color:red">
+            {{ session()->get('delete') }}
+            </p>  
+            @endif
             @foreach($usersAll as $alluser)
             <div class="col-md-4">
                 <div class="card item-start">
@@ -20,7 +25,9 @@
                 <p class="title">CEO & Founder, Example</p>
                 <p>{{$alluser['dob']}}</p>
                 <p>{{$alluser['Phone']}}</p>
-                <p><button>Profile</button></p>
+                <p><a href="{{url('/employee/'.$alluser->id)}}"><button>Profile</button></a></p>
+                <p><a href="{{url('/edit/'.$alluser->id)}}"><button>Edit</button></a></p>
+                <p><a href="{{url('/remove/'.$alluser->id)}}"><button>Delete</button></a></p>
                 </div>
             </div>
             @endforeach

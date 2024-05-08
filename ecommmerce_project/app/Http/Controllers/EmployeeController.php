@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Employee;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\file;
 
 class EmployeeController extends Controller
 {
@@ -150,5 +151,58 @@ class EmployeeController extends Controller
         $usersAll = Employee::paginate(6);
         // dd($usersAll);
         return view('userAll',compact('usersAll'));
+    }
+
+    public function editInfo($id)
+    {
+        $employes = Employee::find($id);
+        $images = explode('|', $employes->image);
+        return view('edit', compact('employes','images'));
+    }
+
+    public function updateData(Request $request, $id){
+        try
+        {
+            $employe = Employee::find($id);
+            $employe->fname = $request->has('txtFirstname')?$request->get('txtFirstname'):'';
+            $employe->lname=$request->has('txtLastname')? $request->get('txtLastname'):'';
+            $employe->phone=$request->has('txtPhone')? $request->get('txtPhone'):'';
+            $employe->dob=$request->has('dtpDate')? $request->get('dtpDate'):'';
+            $employe->password=$request->has('txtPassword')? $request->get('txtPassword'):'';
+
+            if($request->has('images'))
+            {
+                $destination = '/images/employee/'.$employe->image;
+                if(File::exists($destination))
+                {
+                    File::delete($destination);
+                }
+                $files = $request->file('images');
+                $imageLocation = array();
+                $i=0;
+                foreach($files as $file)
+                {
+                    $extention = $file->getClientoriginalExtension();
+                    $fileName = 'employee-'. time() . ++$i . '.' . $extention;
+                    $location = '/images/employee/';
+                    $file->move(public_path() . $location, $fileName);
+                    $imageLocation[] = $location . $fileName;
+                }
+                $employe->image=implode('|', $imageLocation);
+                $employe->update();
+                return back()->with('success','User data information updated successfully!');  
+            }
+            
+        }
+        catch(Exprestion)
+        {
+            return back()->with('error','User data information not updated. Please try again!');
+        }
+    }
+
+    public function delete($id){
+        $employe = Employee::find($id);
+        $employe->delete();
+        return redirect('/allUser')->with('delete','User delete successfully.');
     }
 }

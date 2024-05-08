@@ -4,117 +4,156 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Details</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="/css/grid.css">
     <link rel="stylesheet" href="/css/userDetail.css">
 </head>
 <body>
-    <!-- @if(isset($images[0]))
-    <img src="{{asset($images[0])}}" alt="user" height="200" width="250">
-    @endif
-    @if(isset($images[1]))
-    <img src="{{asset($images[1])}}" alt="user" height="200" width="250">
-    @endif
-    @if(isset($images[2]))
-    <img src="{{asset($images[2])}}" alt="user" height="200" width="250">
-    @endif
-    @if(isset($images[3]))
-    <img src="{{asset($images[3])}}" alt="user" height="200" width="250">
-    @endif
-    @if(isset($images[4]))
-    <img src="{{asset($images[4])}}" alt="user" height="200" width="250">
-    @endif
-    <h2>{{$employee->fname}}</h2>
-    <h3>{{$employee->dob}}</h3>
-    <h4>{{$employee->Phone}}</h4>
-    <p>{{$employee->username}}</p> -->
-    
 
-    <section class="product">
-	<div class="product__photo">
-		<div class="photo-container">
-			<div class="photo-main">
-				<div class="controls">
-					<i class="material-icons">share</i>
-					<i class="material-icons">favorite_border</i>
-				</div>
-				@if(isset($images[0]))
-                <img class="img-main" src="{{asset($images[0])}}" alt="user">
-                @endif  
-			</div>
-			<div class="photo-album">
-				<ul>
-					<li>
-                        @if(isset($images[1]))
-                        <img src="{{asset($images[1])}}" alt="user">
+    
+<section id="product-detail">
+    <div class="row">
+        <div class="col span_1_of_2">
+            <div class="picture w3-display-container">
+            @if(isset($images[0]))
+            <img class="img-main" src="{{asset($images[0])}}" alt="Nature">
+            @endif
+            <!-- <span onclick="this.parentElement.style.display='none'" 
+            class="w3-display-topright w3-button w3-transparent w3-text-white">&times;</span> -->
+            <div class="w3-display-bottomleft w3-container w3-padding w3-text-white">Shamim Hossain</div>
+        </div>
+        <!-- main photo section big picture -->
+        <div id="Nature" class="picture w3-display-container" style="display:none">
+            @if(isset($images[0]))
+            <img class="img-main" src="{{asset($images[0])}}" alt="Nature">
+            @endif
+            <!-- <span onclick="this.parentElement.style.display='none'" 
+            class="w3-display-topright w3-button w3-transparent w3-text-white">&times;</span> -->
+            <div class="w3-display-bottomleft w3-container w3-padding w3-text-white">Shamim Hossain</div>
+        </div>
+
+        <div id="Snow" class="picture w3-display-container" style="display:none">
+            @if(isset($images[1]))
+            <img class="img-main" src="{{asset($images[1])}}" alt="Snow" >
+            @endif
+            <!-- <span onclick="this.parentElement.style.display='none'" 
+            class="w3-display-topright w3-button w3-transparent w3-text-white">&times;</span> -->
+            <div class="w3-display-bottomleft w3-container w3-padding w3-text-white">{{$employee->username}}</div>
+        </div>
+
+        <div id="Mountains" class="picture w3-display-container" style="display:none">
+            @if(isset($images[2]))
+            <img class="img-main" src="{{asset($images[2])}}" alt="Mountains">
+            @endif
+            <!-- <span onclick="this.parentElement.style.display='none'" 
+            class="w3-display-topright w3-button w3-transparent">&times;</span> -->
+            <div class="w3-display-bottomleft w3-container w3-padding w3-text-white">{{$employee->dob}}</div>
+        </div>
+
+        <div id="Lights" class="picture w3-display-container" style="display:none">
+            @if(isset($images[3]))
+            <img class="img-main" src="{{asset($images[3])}}" alt="Lights">
+            @endif
+            <!-- <span onclick="this.parentElement.style.display='none'" 
+            class="w3-display-topright w3-button w3-transparent w3-text-white">&times;</span> -->
+            <div class="w3-display-bottomleft w3-container w3-padding w3-text-white">{{$employee->Phone}}</div>
+        </div>
+
+            <div class="col span_1_of_4">
+                <div class="w3-col s3 w3-container">
+                    <a href="javascript:void(0)" class="w3-hover-opacity" onclick="openImg('Nature');">
+                    @if(isset($images[0]))
+                        <img class="img-sm" src="{{asset($images[0])}}" alt="Nature">
                         @endif
-                    </li>
-                    <li>
-                        @if(isset($images[2]))
-                        <img src="{{asset($images[2])}}" alt="user">
-                        @endif
-                    </li>
-                    <li>
-                        @if(isset($images[3]))
-                        <img src="{{asset($images[3])}}" alt="user">
-                        @endif
-                    </li>
-                    <li>
-                        @if(isset($images[4]))
-                        <img src="{{asset($images[4])}}" alt="user">
-                        @endif
-                    </li>
-				</ul>
-			</div>
-		</div>
-	</div>
-	<div class="product__info">
-		<div class="title">
-			<h1>Delicious Apples</h1>
-			<span>COD: 45999</span>
-		</div>
-		<div class="price">
-			R$ <span>7.93</span>
-		</div>
-		<div class="variant">
-			<h3>SELECT A COLOR</h3>
-			<ul>
-                <li>
+                    </a>
+                </div>
+            </div>
+            <div class="col span_1_of_4">
+                <div class="w3-col s3 w3-container">
+                    <a href="javascript:void(0)" class="w3-hover-opacity" onclick="openImg('Snow');">
                     @if(isset($images[1]))
-                    <img src="{{asset($images[1])}}" alt="user">
+                    <img class="img-sm" src="{{asset($images[1])}}" alt="Snow" >
                     @endif
-                </li>
-                <li>
+                    </a>
+                </div>
+            </div>
+            <div class="col span_1_of_4">
+                <div class="w3-col s3 w3-container">
+                    <a href="javascript:void(0)" class="w3-hover-opacity" onclick="openImg('Mountains');">
                     @if(isset($images[2]))
-                    <img src="{{asset($images[2])}}" alt="user">
+                    <img class="img-sm" src="{{asset($images[2])}}" alt="Mountains" >
                     @endif
-                </li>
-                <li>
+                    </a>
+                </div>
+            </div>
+            <div class="col span_1_of_4">
+                <div class="w3-col s3 w3-container">
+                    <a href="javascript:void(0)" class="w3-hover-opacity" onclick="openImg('Lights');">
                     @if(isset($images[3]))
-                    <img src="{{asset($images[3])}}" alt="user">
+                    <img class="img-sm" src="{{asset($images[3])}}" alt="Lights" >
                     @endif
-                </li>
-                <li>
-                    @if(isset($images[4]))
-                    <img src="{{asset($images[4])}}" alt="user">
-                    @endif
-                </li>
-            </ul>
-		</div>
-		<div class="description">
-			<h3>BENEFITS</h3>
-			<ul>
-				<li>Apples are nutricious</li>
-				<li>Apples may be good for weight loss</li>
-				<li>Apples may be good for bone health</li>
-				<li>They're linked to a lowest risk of diabetes</li>
-			</ul>
-		</div>
-		<button class="buy--btn">ADD TO CART</button>
-	</div>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col span_1_of_2">
+            <div class="col span_2_of_3">
+                <form action="/addCart" method="POST">
+                    @csrf
+                    <div class="w3-container">
+                        <h2>This is the full name of product. here are the big product name {{$employee->fname}}</h2><hr>
+                        <h3>Price: $45.75/-</h3>
+                        <p><del>$65.00/-</del>  45%</p>
+                    </div><hr>
+                    <div class="col span_1_of_2" style="width:200px;">
+                        <label for="size">Select Size:</label>
+                        <select name="size" id="size">
+                            <option value="XXL">XXL</option>
+                            <option value="XL">XL</option>
+                            <option value="L">L</option>
+                            <option value="M">M</option>
+                            <option value="S">S</option>
+                        </select>   
+                    </div>
+                    <input type="number" id="qty" value="1"> 
+                    <input type="hidden" name="pid" value="{{$employee->id}}">
+                    <input type="hidden" name="fname" value="{{$employee->fname}}">
+                    <input type="hidden" name="phone" value="{{$employee->phone}}">
+                    <div class="w3-container">
+                        <div class="col span_1_of_2">
+                            <button class="btnBuy">Buy Now</button>
+                        </div>
+                        <div class="col span_1_of_2">
+                        <button type="submit" class="btnCart">Add cart</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col span_1_of_3 box">
+                <h4>{{$employee->dob}} Dhaka, Dhaka North, Banani Road No. 12 - 19</h4>
+                <p>Free Delivery 6 May - 14 May</p>
+                    <h6>Contact: {{$employee->phone}}</h6>
+                <p>Saller ID: {{$employee->username}}9534</p>
+                <hr>
+                <p>Cash on Delivery Available</p>
+            </div>            
+        </div>
+
+    </div>
 </section>
 
-<footer>
-	<p>Design from <a href="https://dribbble.com/shots/5216438-Daily-UI-012">dribbble shot</a> of <a href="https://dribbble.com/rodrigorramos">Rodrigo Ramos</a></p>
-</footer>
+<script>
+function openImg(imgName) {
+  var i, x;
+  x = document.getElementsByClassName("picture");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  document.getElementById(imgName).style.display = "block";
+}
+</script>
 
 </body>
 </html>
