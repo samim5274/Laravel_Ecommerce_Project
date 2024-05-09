@@ -205,4 +205,6 @@ class EmployeeController extends Controller
         $employe->delete();
         return redirect('/allUser')->with('delete','User delete successfully.');
     }
+
+    
 }

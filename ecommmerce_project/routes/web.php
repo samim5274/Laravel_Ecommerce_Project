@@ -59,3 +59,7 @@ Route::get('/edit/{id}', 'App\Http\Controllers\EmployeeController@editInfo');
 Route::post('/update-data/{id}','App\Http\Controllers\EmployeeController@updateData');
 
 Route::get('/remove/{id}','App\Http\Controllers\EmployeeController@delete');
+
+Route::get('/addCart/{id}','App\Http\Controllers\ProductController@addtocart');
+
+Route::get('/cart','App\Http\Controllers\ProductController@cart');

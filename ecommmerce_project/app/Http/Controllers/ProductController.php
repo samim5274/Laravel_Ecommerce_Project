@@ -130,4 +130,30 @@ class ProductController extends Controller
         }
         return view('add_Products', compact('returnProduct'));
     }
+
+    public function addtocart($id)
+    {
+        $product = Product::find($id);
+
+        $cart = session()->get('cart');
+        
+        $cart[$id] = [
+            "id" => $product->id,
+            "name" => $product->name,
+            "amount" => $product->amount,
+            "price" => $product->price,
+            "image" => $product->image
+        ];
+   
+        session()->put('cart', $cart); 
+   
+        return redirect()->back()->with('success', 'Product added to cart successfully!');
+    
+    }
+
+    public function cart()
+    {
+        return view("cart");
+    }
+
 }

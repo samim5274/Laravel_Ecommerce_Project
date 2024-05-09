@@ -17,6 +17,8 @@
           <a href="{{ url('/products/'.$product->id) }}"><img src="{{asset(explode('|',$product->image)[0])}}" height="200" width="150"></a>
           <h4>{{$product['name']}}</h4>
           <p>{{$product['price']}}</p>
+          <a href="{{ url('/addCart/'.$product->id) }}"><button type="submit" class="btnCart">Add cart</button></a>
+          <a href="/cart"><button class="">Go to Cart</button></a>
         </div>
         @endforeach
     </div>

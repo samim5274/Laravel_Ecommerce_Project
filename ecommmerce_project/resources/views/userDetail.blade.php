@@ -100,36 +100,33 @@
 
         <div class="col span_1_of_2">
             <div class="col span_2_of_3">
-                <form action="/addCart" method="POST">
-                    @csrf
-                    <div class="w3-container">
-                        <h2>This is the full name of product. here are the big product name {{$employee->fname}}</h2><hr>
-                        <h3>Price: $45.75/-</h3>
-                        <p><del>$65.00/-</del>  45%</p>
-                    </div><hr>
-                    <div class="col span_1_of_2" style="width:200px;">
-                        <label for="size">Select Size:</label>
-                        <select name="size" id="size">
-                            <option value="XXL">XXL</option>
-                            <option value="XL">XL</option>
-                            <option value="L">L</option>
-                            <option value="M">M</option>
-                            <option value="S">S</option>
-                        </select>   
+                
+                <div class="w3-container">
+                    <h2>This is the full name of product. here are the big product name {{$employee->fname}}</h2><hr>
+                    <h3>Price: $45.75/-</h3>
+                    <p><del>$65.00/-</del>  45%</p>
+                </div><hr>
+                <div class="col span_1_of_2" style="width:200px;">
+                    <label for="size">Select Size:</label>
+                    <select name="size" id="size">
+                        <option value="XXL">XXL</option>
+                        <option value="XL">XL</option>
+                        <option value="L">L</option>
+                        <option value="M">M</option>
+                        <option value="S">S</option>
+                    </select>   
+                </div>
+                <div class="w3-container">
+                    <div class="col span_1_of_2">
+                        <button class="btnBuy">Buy Now</button>
                     </div>
-                    <input type="number" id="qty" value="1"> 
-                    <input type="hidden" name="pid" value="{{$employee->id}}">
-                    <input type="hidden" name="fname" value="{{$employee->fname}}">
-                    <input type="hidden" name="phone" value="{{$employee->phone}}">
-                    <div class="w3-container">
-                        <div class="col span_1_of_2">
-                            <button class="btnBuy">Buy Now</button>
-                        </div>
-                        <div class="col span_1_of_2">
-                        <button type="submit" class="btnCart">Add cart</button>
-                        </div>
+                    <div class="col span_1_of_2">
+                    <button type="submit" class="btnCart">Add cart</button>
                     </div>
-                </form>
+                    <div class="col span_1_of_2">
+                        <a href="/cart"><button class="">Go Cart</button></a>
+                    </div>
+                </div>
             </div>
             <div class="col span_1_of_3 box">
                 <h4>{{$employee->dob}} Dhaka, Dhaka North, Banani Road No. 12 - 19</h4>
@@ -143,6 +140,12 @@
 
     </div>
 </section>
+
+<div>
+    @if(asset(session()->has('success')))
+    <p>{{ session()->get('success') }}</p>
+    @endif
+</div>
 
 <script>
 function openImg(imgName) {
