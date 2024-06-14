@@ -10,7 +10,7 @@
 </head>
 <body>
 
-    
+
 <section id="product-detail">
     <div class="row">
         <div class="col span_1_of_2">
@@ -18,7 +18,7 @@
             @if(isset($images[0]))
             <img class="img-main" src="{{asset($images[0])}}" alt="Nature">
             @endif
-            <!-- <span onclick="this.parentElement.style.display='none'" 
+            <!-- <span onclick="this.parentElement.style.display='none'"
             class="w3-display-topright w3-button w3-transparent w3-text-white">&times;</span> -->
             <div class="w3-display-bottomleft w3-container w3-padding w3-text-white">Shamim Hossain</div>
         </div>
@@ -27,7 +27,7 @@
             @if(isset($images[0]))
             <img class="img-main" src="{{asset($images[0])}}" alt="Nature">
             @endif
-            <!-- <span onclick="this.parentElement.style.display='none'" 
+            <!-- <span onclick="this.parentElement.style.display='none'"
             class="w3-display-topright w3-button w3-transparent w3-text-white">&times;</span> -->
             <div class="w3-display-bottomleft w3-container w3-padding w3-text-white">Shamim Hossain</div>
         </div>
@@ -36,7 +36,7 @@
             @if(isset($images[1]))
             <img class="img-main" src="{{asset($images[1])}}" alt="Snow" >
             @endif
-            <!-- <span onclick="this.parentElement.style.display='none'" 
+            <!-- <span onclick="this.parentElement.style.display='none'"
             class="w3-display-topright w3-button w3-transparent w3-text-white">&times;</span> -->
             <div class="w3-display-bottomleft w3-container w3-padding w3-text-white">{{$employee->username}}</div>
         </div>
@@ -45,7 +45,7 @@
             @if(isset($images[2]))
             <img class="img-main" src="{{asset($images[2])}}" alt="Mountains">
             @endif
-            <!-- <span onclick="this.parentElement.style.display='none'" 
+            <!-- <span onclick="this.parentElement.style.display='none'"
             class="w3-display-topright w3-button w3-transparent">&times;</span> -->
             <div class="w3-display-bottomleft w3-container w3-padding w3-text-white">{{$employee->dob}}</div>
         </div>
@@ -54,7 +54,7 @@
             @if(isset($images[3]))
             <img class="img-main" src="{{asset($images[3])}}" alt="Lights">
             @endif
-            <!-- <span onclick="this.parentElement.style.display='none'" 
+            <!-- <span onclick="this.parentElement.style.display='none'"
             class="w3-display-topright w3-button w3-transparent w3-text-white">&times;</span> -->
             <div class="w3-display-bottomleft w3-container w3-padding w3-text-white">{{$employee->Phone}}</div>
         </div>
@@ -100,7 +100,7 @@
 
         <div class="col span_1_of_2">
             <div class="col span_2_of_3">
-                
+
                 <div class="w3-container">
                     <h2>This is the full name of product. here are the big product name {{$employee->fname}}</h2><hr>
                     <h3>Price: $45.75/-</h3>
@@ -114,7 +114,7 @@
                         <option value="L">L</option>
                         <option value="M">M</option>
                         <option value="S">S</option>
-                    </select>   
+                    </select>
                 </div>
                 <div class="w3-container">
                     <div class="col span_1_of_2">
@@ -135,7 +135,7 @@
                 <p>Saller ID: {{$employee->username}}9534</p>
                 <hr>
                 <p>Cash on Delivery Available</p>
-            </div>            
+            </div>
         </div>
 
     </div>

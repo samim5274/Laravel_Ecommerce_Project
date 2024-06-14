@@ -8,6 +8,14 @@
 </head>
 <body>
 
+<div class="messages">
+    @if(asset(session()->has('success')))
+    <p>{{ session()->get('success') }}</p>
+    @endif
+    @if(asset(session()->has('error')))
+    <p>{{ session()->get('error') }}</p>
+    @endif
+</div>
 
 <section id="product-section" class="mt-4">
   <div class="container">
@@ -22,8 +30,8 @@
         </div>
         @endforeach
     </div>
-    <div class="pagination">
-        {{$products->links('vendor.pagination.default')}}
+    <div class="pagination pt-4">
+        {{$products->links('pagination::bootstrap-4')}}
     </div>
   </div>
 </section>

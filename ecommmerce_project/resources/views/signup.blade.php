@@ -48,7 +48,7 @@
         <h3>I accept all terms & condition</h3>
       </div>
       <div class="input-box button">
-        <input type="Submit" value="Register Now">
+        <input type="Submit" name="btnReg" value="Register Now">
       </div>
       <div class="text">
         <h3>Already have an account? <a href="/">Login now</a></h3>

@@ -18,7 +18,7 @@ use App\Http\Controllers\EmployeeController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('login');
 
 Route::get('/signup', function(){
     return view('signup');
@@ -62,4 +62,8 @@ Route::get('/remove/{id}','App\Http\Controllers\EmployeeController@delete');
 
 Route::get('/addCart/{id}','App\Http\Controllers\ProductController@addtocart');
 
+Route::get('/remove/cart/{id}','App\Http\Controllers\ProductController@removeCart');
+
 Route::get('/cart','App\Http\Controllers\ProductController@cart');
+
+Route::get('/buyNow/{id}','App\Http\Controllers\ProductController@buyNow')->middleware('auth');

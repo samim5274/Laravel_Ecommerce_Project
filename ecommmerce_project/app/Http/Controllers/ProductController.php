@@ -136,13 +136,15 @@ class ProductController extends Controller
         $product = Product::find($id);
 
         $cart = session()->get('cart');
-        
+
+        $images = explode('|',$product->image);
+
         $cart[$id] = [
             "id" => $product->id,
             "name" => $product->name,
             "amount" => $product->amount,
             "price" => $product->price,
-            "image" => $product->image
+            "image" => $images[0]
         ];
    
         session()->put('cart', $cart); 
@@ -156,4 +158,23 @@ class ProductController extends Controller
         return view("cart");
     }
 
+    public function removeCart($id)
+    {
+        $cart = session()->get('cart', []);
+
+        if(isset($cart[$id]))
+        {
+            unset($cart[$id]);
+
+            session()->put('cart', $cart);
+
+            return back()->with('success','Item remove successfully');
+        }
+        return back()->with('error','Item remove not possible');
+    }
+
+    public function buyNow($id)
+    {
+        return "order complete.";
+    }
 }
